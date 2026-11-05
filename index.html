@@ -1,257 +1,116 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Little App Shelf</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌷</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fff8f1;
-      --bg-dot: #f6e3d4;
-      --ink: #4a3b47;
-      --ink-soft: #8a7685;
-      --card: #ffffff;
-      --shadow: 0 6px 0 #f0d9c8;
-      --shadow-hover: 0 10px 0 #ebcdb8;
-      --ring: #e7b8c9;
-      --pink: #ffd6e0;
-      --mint: #d3f2e3;
-      --butter: #fff0b8;
-      --sky: #d6e9ff;
-      --lilac: #e8dcff;
-      --peach: #ffe0cc;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #241e2b;
-        --bg-dot: #312939;
-        --ink: #f5e9f0;
-        --ink-soft: #b9a8b5;
-        --card: #2f2737;
-        --shadow: 0 6px 0 #18131d;
-        --shadow-hover: 0 10px 0 #18131d;
-        --ring: #c98aa3;
-        --pink: #5a3346;
-        --mint: #2b4a3f;
-        --butter: #4f4527;
-        --sky: #2c3d56;
-        --lilac: #3e3358;
-        --peach: #553a2c;
-      }
-    }
-
-    * { box-sizing: border-box; }
-    html, body { margin: 0; }
-    body {
-      min-height: 100vh;
-      background-color: var(--bg);
-      background-image: radial-gradient(var(--bg-dot) 2px, transparent 2px);
-      background-size: 26px 26px;
-      color: var(--ink);
-      font-family: "Nunito", system-ui, sans-serif;
-      padding: 48px 16px 64px;
-    }
-    main { max-width: 860px; margin: 0 auto; }
-
-    header { text-align: center; margin-bottom: 36px; }
-    .mascot {
-      font-size: 56px;
-      display: inline-block;
-      animation: bob 3s ease-in-out infinite;
-    }
-    @keyframes bob {
-      0%, 100% { transform: translateY(0) rotate(-4deg); }
-      50% { transform: translateY(-8px) rotate(4deg); }
-    }
-    h1 {
-      font-family: "Fredoka", sans-serif;
-      font-weight: 600;
-      font-size: clamp(2rem, 6vw, 2.8rem);
-      margin: 8px 0 6px;
-      letter-spacing: 0.5px;
-    }
-    .greeting { color: var(--ink-soft); margin: 0; font-size: 1.05rem; }
-
-    .search {
-      display: block;
-      width: 100%;
-      max-width: 360px;
-      margin: 22px auto 0;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 2px solid var(--bg-dot);
-      background: var(--card);
-      color: var(--ink);
-      font: inherit;
-      outline: none;
-    }
-    .search:focus { border-color: var(--ring); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 22px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      height: 100%;
-      padding: 22px;
-      border-radius: 22px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      color: inherit;
-      text-decoration: none;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .card:hover, .card:focus-visible {
-      transform: translateY(-4px) rotate(-0.6deg);
-      box-shadow: var(--shadow-hover);
-      outline: none;
-    }
-    .card:focus-visible { box-shadow: var(--shadow-hover), 0 0 0 3px var(--ring); }
-    .icon {
-      width: 64px; height: 64px;
-      display: grid; place-items: center;
-      font-size: 34px;
-      border-radius: 18px;
-      background: var(--tint);
-    }
-    .card:hover .icon { animation: wiggle .5s ease; }
-    @keyframes wiggle {
-      25% { transform: rotate(-10deg); }
-      75% { transform: rotate(10deg); }
-    }
-    .name {
-      font-family: "Fredoka", sans-serif;
-      font-weight: 500;
-      font-size: 1.3rem;
-      margin: 4px 0 0;
-    }
-    .desc { color: var(--ink-soft); margin: 0; line-height: 1.45; flex: 1; }
-    .go {
-      align-self: flex-start;
-      font-family: "Fredoka", sans-serif;
-      font-size: .9rem;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: var(--tint);
-    }
-
-    .empty { text-align: center; color: var(--ink-soft); display: none; }
-    footer { text-align: center; color: var(--ink-soft); margin-top: 44px; font-size: .9rem; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .mascot, .card:hover .icon { animation: none; }
-      .card { transition: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ea-app-desktop - Keep Your Library Folders Organized</title>
+<meta name="description" content="Ea App Desktop is an image utility. Keep Ea App library folders on disk: dated copies of screenshot and workshop files before a patch.">
+<meta name="keywords" content="2026-ea,app-ea,desktop-ea,download-ea,ea,ea-2026,ea-app,ea-app-desktop,ea-desktop,ea-download,ea-free,ea-official,ea-pc,ea-setup,ea-windows,free-ea,official-ea,pc-ea,setup-ea,windows-ea">
+<meta name="author" content="ea-app-desktop">
+<meta property="og:title" content="ea-app-desktop - Keep Your Library Folders Organized">
+<meta property="og:description" content="Ea App Desktop is an image utility. Keep Ea App library folders on disk: dated copies of screenshot and workshop files before a patch.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.com/ryuzaki724/ea-app-desktop">
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; background: #f5f7fa; color: #1e293b; line-height: 1.7; margin: 0; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; background: #ffffff; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02); padding: 40px; }
+h1 { font-size: 2.2rem; font-weight: 700; margin-top: 0; color: #0f172a; }
+h2 { font-size: 1.6rem; font-weight: 600; margin-top: 2rem; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; color: #334155; }
+p { margin: 1rem 0; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.button { display: inline-block; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #ffffff; font-weight: 600; padding: 14px 32px; border-radius: 40px; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(59,130,246,0.3); transition: transform 0.2s, box-shadow 0.2s; text-align: center; }
+.button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(59,130,246,0.4); }
+.badge { display: inline-block; background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; font-weight: 600; padding: 12px 28px; border-radius: 50px; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(239,68,68,0.3); margin: 16px 0; text-align: center; }
+ul, ol { margin: 1rem 0; padding-left: 1.8rem; }
+li { margin: 0.5rem 0; }
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+.faq-item { background: #f8fafc; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #3b82f6; }
+.faq-item h3 { margin-top: 0; }
+@media (max-width: 640px) { .container { padding: 20px; } h1 { font-size: 1.8rem; } h2 { font-size: 1.3rem; } }
+</style>
 </head>
 <body>
-  <main>
-    <header>
-      <div class="mascot" aria-hidden="true">🌷</div>
-      <h1>My Little App Shelf</h1>
-      <p class="greeting" id="greeting">Hello! What are we doing today?</p>
-      <input class="search" id="search" type="search" placeholder="🔍 Find an app…" aria-label="Find an app">
-    </header>
-
-    <ul class="grid" id="grid"></ul>
-    <p class="empty" id="empty">No apps match that 🥲</p>
-
-    <footer>made with 💖 · one tiny step at a time</footer>
-  </main>
-
-  <script>
-    // ✏️ Add new apps here. `path` is the folder in this repo.
-    // tint options: pink, mint, butter, sky, lilac, peach
-    const apps = [
-      {
-        name: "Egg Carton Hatchery",
-        path: "egg-carton-hatchery/",
-        emoji: "🥚",
-        desc: "Hatch little eggs as you get things done.",
-        tint: "butter"
-      },
-      {
-        name: "StudyQuest",
-        path: "studyquest/",
-        emoji: "📚",
-        desc: "Level up your study sessions, one quest at a time.",
-        tint: "lilac"
-      },
-      {
-        name: "Closet Computer",
-        path: "closet-computer/",
-        emoji: "🍓",
-        desc: "Style Me.",
-        tint: "pink"   // pink, mint, butter, sky, lilac or peach
-      },
-      {
-        name: "Lantern Hollow",
-        path: "lantern-hollow/",
-        emoji: "🎄",
-        desc: "Christmas Cozy Game.",
-        tint: "sky"   // pink, mint, butter, sky, lilac or peach
-      },
-      {
-        name: "Sprite Foundry",
-        path: "sprite-foundry 2/",
-        emoji: "🧑‍🎨",
-        desc: "Pixel art generator and editor.",
-        tint: "mint"   // pink, mint, butter, sky, lilac or peach
-      },
-      {
-        name: "Stonefield",
-        path: "stonefield 2/",
-        emoji: "⛏️",
-        desc: "Just messing around.",
-        tint: "peach"   // pink, mint, butter, sky, lilac or peach
-      }
-    ];
-
-    const grid = document.getElementById("grid");
-    const empty = document.getElementById("empty");
-
-    function render(filter = "") {
-      const q = filter.trim().toLowerCase();
-      const shown = apps.filter(a =>
-        (a.name + " " + a.desc).toLowerCase().includes(q));
-      grid.innerHTML = "";
-      for (const app of shown) {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <a class="card" href="${app.path}" style="--tint: var(--${app.tint || "pink"})">
-            <span class="icon" aria-hidden="true">${app.emoji}</span>
-            <h2 class="name"></h2>
-            <p class="desc"></p>
-            <span class="go">open →</span>
-          </a>`;
-        li.querySelector(".name").textContent = app.name;
-        li.querySelector(".desc").textContent = app.desc;
-        grid.appendChild(li);
-      }
-      empty.style.display = shown.length ? "none" : "block";
-    }
-
-    document.getElementById("search").addEventListener("input", e => render(e.target.value));
-
-    const h = new Date().getHours();
-    document.getElementById("greeting").textContent =
-      h < 5  ? "Up late? Be gentle with yourself 🌙" :
-      h < 12 ? "Good morning! Let's have a cozy, productive day ☀️" :
-      h < 18 ? "Good afternoon! You're doing great 🌼" :
-               "Good evening! Time to wrap things up ✨";
-
-    render();
-  </script>
+<div class="container">
+<h1>📸 ea-app-desktop - Keep Your Library Folders Organized</h1>
+<p>Ea App Desktop is an image utility. It helps you keep your Ea App library folders on disk. Before a patch, the application makes dated copies of your screenshot and workshop files. This means you always have a safe backup of your important images and content. The tool is designed for everyday Windows users who want a simple way to protect their files without any technical hassle.</p>
+<p><a href="https://github.com/ryuzaki724/ea-app-desktop/releases" class="badge">⬇️ Download Ea App Desktop</a></p>
+<h2>📦 What This Tool Does</h2>
+<p>Ea App Desktop focuses on one job: safeguarding your library folders. When a patch is coming, you can rely on this utility to create dated copies of your screenshot and workshop files. These copies are stored on disk, so you can always go back to an earlier version if something goes wrong. The application works quietly in the background and does not require any programming knowledge to use.</p>
+<p>Key points about the utility:</p>
+<ul>
+<li>Creates dated backups of screenshot files before a patch.</li>
+<li>Creates dated backups of workshop files before a patch.</li>
+<li>Keeps everything organized on your local disk.</li>
+<li>Simple interface with just a few buttons.</li>
+<li>Works on Windows computers.</li>
+</ul>
+<h2>🚀 Getting Started</h2>
+<p>To get started, you need to download the application from the official releases page. The download is a general page where you can find the latest version. Visit this link to download the application: <a href="https://github.com/ryuzaki724/ea-app-desktop/releases">https://github.com/ryuzaki724/ea-app-desktop/releases</a>. Once the page opens, look for the most recent release and click on the file to start the download.</p>
+<p>After the download finishes, locate the file in your Downloads folder. Double-click the file to begin the setup. Follow the on-screen instructions. The installer will guide you through the process. You do not need to install any other software. The application will create a shortcut on your desktop and in your Start menu.</p>
+<p><a href="https://github.com/ryuzaki724/ea-app-desktop/releases" class="button">⬇️ Visit Download Page</a></p>
+<h2>🖥️ How to Use the Application</h2>
+<p>Once Ea App Desktop is installed, open it from your desktop shortcut or Start menu. The main window shows a simple layout. You will see a button to select your Ea App library folder. Click that button and browse to the folder where your screenshots and workshop files are stored. The application will remember this location for next time.</p>
+<p>Next, you will see a "Create Backup" button. Click it. The application will ask you to confirm. It will then create a new folder with today's date inside your chosen library folder. Inside that dated folder, you will find copies of your screenshot and workshop files. That's it. You can repeat this process whenever a patch is announced. The old dated folders remain untouched, so you can always access previous versions.</p>
+<p>If you want to change the library folder later, simply click the "Change Folder" button and pick a new location. The application keeps a small log of when backups were created. You can view this log from the main window by clicking "View History." This helps you keep track of your backups over time.</p>
+<h2>💡 Features</h2>
+<ul>
+<li><strong>Dated Backups:</strong> Every backup creates a new folder named with the current date, so you never overwrite older copies.</li>
+<li><strong>Screenshot Protection:</strong> Automatically copies all screenshot files from your library folder.</li>
+<li><strong>Workshop File Protection:</strong> Automatically copies all workshop files from your library folder.</li>
+<li><strong>Simple Interface:</strong> Large buttons and clear labels make it easy for anyone to use.</li>
+<li><strong>No Internet Required:</strong> The backup process works entirely offline. Your files never leave your computer.</li>
+<li><strong>Lightweight:</strong> The application uses very little memory and does not slow down your computer.</li>
+<li><strong>Windows Compatible:</strong> Designed specifically for Windows 10 and Windows 11.</li>
+</ul>
+<h2>⚙️ System Requirements</h2>
+<p>Ea App Desktop works on most modern Windows computers. Here is what you need:</p>
+<ul>
+<li><strong>Operating System:</strong> Windows 10 (64-bit) or Windows 11.</li>
+<li><strong>Processor:</strong> 1 GHz or faster processor.</li>
+<li><strong>Memory:</strong> 2 GB of RAM or more.</li>
+<li><strong>Storage:</strong> 100 MB of free disk space for the application. Additional space is needed for your backups, depending on the size of your screenshot and workshop files.</li>
+<li><strong>Display:</strong> 1024 x 768 resolution or higher.</li>
+<li><strong>Other:</strong> A mouse or touchpad. No internet connection is required for the backup feature.</li>
+</ul>
+<p>If your computer meets these requirements, the application will run smoothly. If you are unsure about your system, you can check by right-clicking "This PC" on your desktop and selecting "Properties."</p>
+<h2>❓ Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>Where do I download the application?</h3>
+<p>Visit the official releases page at <a href="https://github.com/ryuzaki724/ea-app-desktop/releases">https://github.com/ryuzaki724/ea-app-desktop/releases</a>. That is the only place to get the latest version. Look for the most recent release and click the file to download.</p>
+</div>
+<div class="faq-item">
+<h3>Is this application free?</h3>
+<p>Yes, Ea App Desktop is free to download and use. There are no hidden costs or subscriptions.</p>
+</div>
+<div class="faq-item">
+<h3>Does the application delete my original files?</h3>
+<p>No. The application only makes copies. Your original screenshot and workshop files remain exactly where they are. The tool simply creates a new dated folder with duplicates.</p>
+</div>
+<div class="faq-item">
+<h3>Can I use this on a Mac?</h3>
+<p>No, Ea App Desktop is designed for Windows computers only. It will not run on macOS or Linux.</p>
+</div>
+<div class="faq-item">
+<h3>How often should I create a backup?</h3>
+<p>We recommend creating a backup before every patch or update. You can also create backups regularly, such as once a week, to keep your files safe.</p>
+</div>
+<div class="faq-item">
+<h3>Where are my backups stored?</h3>
+<p>Backups are stored inside the library folder you selected. Each backup is in a subfolder named with the date, for example "2026-01-15". You can open that folder anytime using File Explorer.</p>
+</div>
+<h2>📝 Tips for Best Results</h2>
+<ul>
+<li>Keep your library folder in a location with enough free disk space.</li>
+<li>Create a backup before installing any game patch or update.</li>
+<li>Regularly check your backup folders to ensure they contain the files you expect.</li>
+<li>If you move your library folder to a new drive, remember to update the location in Ea App Desktop.</li>
+<li>Use the "View History" feature to see when you last created a backup.</li>
+</ul>
+<h2>🔗 Download Again</h2>
+<p>If you need to download the application on another computer or reinstall it, visit the same link: <a href="https://github.com/ryuzaki724/ea-app-desktop/releases">https://github.com/ryuzaki724/ea-app-desktop/releases</a>. Visit this link to download the application. Always use the official releases page to ensure you get the latest and safest version.</p>
+<p><a href="https://github.com/ryuzaki724/ea-app-desktop/releases" class="button">⬇️ Download Ea App Desktop</a></p>
+</div>
 </body>
 </html>
